@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Logo from "./abc.svg";
+import Marquee from "./marquee";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Redirect,
+} from "react-router-dom";
+const content = require("./content.json").pages;
 
-function App() {
+const App = () => {
+  const getDataBySlug = (slug) => {
+    return content.filter((page) => page.slug === slug)[0];
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <img src={Logo} alt="abc logo" />
+            <li>
+              <NavLink
+                aria-current="true"
+                activeStyle={{ color: "orangered" }}
+                to="/industries">
+                Industries
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                aria-current="true"
+                activeStyle={{ color: "orangered" }}
+                to="/services">
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                aria-current="true"
+                activeStyle={{ color: "orangered" }}
+                to="/about-us">
+                About Us
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <button>Contact Us</button>
+        <Switch>
+          <Route path="/industries">
+            <Marquee data={getDataBySlug("industries")} />
+          </Route>
+          <Route path="/services">
+            <Marquee data={getDataBySlug("services")} />
+          </Route>
+          <Route path="/about-us">
+            <Marquee data={getDataBySlug("about-us")} />
+          </Route>
+          <Route path="/">
+            <Redirect to="/industries" />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
