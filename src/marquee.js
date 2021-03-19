@@ -1,12 +1,14 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import Arrow from "./arrow.svg";
+import img1 from "./slide_one.jpg";
+import img2 from "./slide_two.jpg";
+import img3 from "./slide_three.jpg";
 
 const useStyles = makeStyles({
-  headline: (props) => ({
-    backgroundImage: `url(./${props.background})`,
+  headline: {
     width: "45%",
-  }),
+  },
   subhead: {
     width: "45%",
   },
@@ -19,13 +21,31 @@ const useStyles = makeStyles({
     wordBreak: "break-all",
   },
   cta: {
+    padding: "5%",
     backgroundColor: "white",
+    maxWidth: "1440px",
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    wordBreak: "break-all",
     color: "black",
   },
 });
 
 const Marquee = ({ data }) => {
   const classes = useStyles({ ...data.blocks[0] });
+  React.useEffect(() => {
+    const img = [img1, img2, img3].filter((img) => {
+      if (
+        img.toString().split(/[/.]/g)[3] ===
+        data.blocks[0].background.split(".")[0]
+      )
+        return img;
+    });
+    document.querySelector(
+      ".makeStyles-app-1"
+    ).style.backgroundImage = `url(./${img})`;
+  }, [data]);
 
   return (
     <>

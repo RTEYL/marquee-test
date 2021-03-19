@@ -9,7 +9,8 @@ import {
   NavLink,
   Redirect,
 } from "react-router-dom";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
+
 const content = require("./content.json").pages;
 
 const useStyles = makeStyles({
@@ -42,6 +43,7 @@ const App = () => {
   const getDataBySlug = (slug) => {
     return content.filter((page) => page.slug === slug)[0];
   };
+
   const classes = useStyles();
 
   return (
@@ -54,7 +56,7 @@ const App = () => {
               <li>
                 <NavLink
                   aria-current="true"
-                  activeStyle={{ color: "orangered" }}
+                  activeStyle={{ color: "#ffc004" }}
                   to="/industries">
                   Industries
                 </NavLink>
@@ -62,7 +64,7 @@ const App = () => {
               <li>
                 <NavLink
                   aria-current="true"
-                  activeStyle={{ color: "orangered" }}
+                  activeStyle={{ color: "#ffc004" }}
                   to="/services">
                   Services
                 </NavLink>
@@ -70,7 +72,7 @@ const App = () => {
               <li>
                 <NavLink
                   aria-current="true"
-                  activeStyle={{ color: "orangered" }}
+                  activeStyle={{ color: "#ffc004" }}
                   to="/about-us">
                   About Us
                 </NavLink>
