@@ -41,9 +41,11 @@ const Marquee = ({ data }) => {
         data.blocks[0].background.split(".")[0]
       )
         return img;
+
+      return null;
     });
     document.querySelector(
-      ".makeStyles-app-1"
+      ".app-container"
     ).style.backgroundImage = `url(./${img})`;
   }, [data]);
 

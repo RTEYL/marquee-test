@@ -48,7 +48,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={classes.app}>
+      <div className={classes.app + " app-container"}>
         <div className={classes.container}>
           <nav>
             <ul className={classes.li}>
